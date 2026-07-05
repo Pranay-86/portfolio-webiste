@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranay Raj — AI & Security Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --bg-card: #1a1f3a;
+            --text-primary: #e8ecff;
+            --text-secondary: #a8b2d1;
+            --accent-blue: #00d9ff;
+            --accent-cyan: #00f0ff;
+            --border-color: #2a3152;
+            --success: #00ff88;
+            --warning: #ffaa00;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== HEADER & NAV ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-blue);
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-blue);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -500px;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+
+        .hero h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent-blue);
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border: 1px solid var(--accent-blue);
+            color: var(--bg-dark);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .hero-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ==================== ENGINEERING SECTION ==================== */
+        .engineering-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-title span {
+            color: var(--text-secondary);
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .credential-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .credential-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .credential-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ==================== NARRATIVE SECTION ==================== */
+        .narrative-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .narrative-card {
+            position: relative;
+        }
+
+        .narrative-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .narrative-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .accent-text {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* ==================== TECH ARSENAL ==================== */
+        .tech-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tech-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .tech-category h4 {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .tech-category h3 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tech-tag:hover {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+        }
+
+        /* ==================== EXPERIENCE SECTION ==================== */
+        .experience-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .experience-location {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 1rem 0;
+        }
+
+        .achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .achievement {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .achievement::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .stack-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .stack-tag {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight::before {
+            content: '→';
+            color: var(--accent-blue);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* ==================== CERTIFICATIONS ==================== */
+        .certifications-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .cert-item:hover {
+            border-color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .cert-content h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-content p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .cert-status {
+            margin-left: auto;
+            color: var(--success);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 4px;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .footer-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .credentials-grid,
+            .narrative-grid,
+            .tech-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .cert-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cert-status {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .achievement::before,
+            .highlight::before {
+                flex-shrink: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .hero {
+                padding-bottom: 40px;
+            }
+
+            .engineering-section,
+            .narrative-section,
+            .tech-section,
+            .experience-section,
+            .projects-section,
+            .certifications-section,
+            footer {
+                padding: 40px 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span>PRANAY.DEV</span>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <div class="hero-tag">// Developing Secure Systems</div>
+            <h1>PRANAY RAJ</h1>
+            <h2>AI & SECURITY ENGINEER</h2>
+            <p class="hero-tagline">Building intelligent detection systems and autonomous AI agents that combine deep learning with cybersecurity to solve complex real-world problems.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn primary">Get In Touch →</a>
+                <a href="#projects" class="btn">View Work</a>
+            </div>
+            <div class="hero-status">
+                <div class="status-dot"></div>
+                <span>Available for research and engineering roles</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Systems Section -->
+    <section class="engineering-section">
+        <div class="section-tag">// Engineering Foundation</div>
+        <h2 class="section-title">SYSTEMS AT <span>SCALE</span></h2>
+        
+        <div class="credentials-grid">
+            <div class="credential-card">
+                <div class="credential-label">Academic Credentials</div>
+                <div class="credential-value">B.Tech, AI Engineering</div>
+                <div class="credential-description">Third-year student specializing in machine learning, probabilistic reasoning, and robotics at IIT Madras.</div>
+            </div>
+            <div class="credential-card">
+                <div class="credential-label">Current GPA</div>
+                <div class="credential-value">8.9+ / 10</div>
+                <div class="credential-description">Maintaining strong academic performance across core AI, systems, and security courses.</div>
+            </div>
+            <div class="credential-card">
+                <div class="credential-label">Research Focus</div>
+                <div class="credential-value">ML Security & Detection</div>
+                <div class="credential-description">Adversarial robustness, malware detection, probabilistic models, and uncertainty quantification.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narrative Section -->
+    <section class="narrative-section">
+        <div class="section-tag">// Core Philosophy</div>
+        <h2 class="section-title">BUILDING FOR <span>RELIABILITY</span></h2>
+
+        <div class="narrative-grid">
+            <div class="narrative-card">
+                <h3>Deep Learning Research</h3>
+                <p>I develop neural architectures that solve real security problems—from <span class="accent-text">intrusion detection systems</span> to zero-day malware identification. My work focuses on understanding how deep models fail under adversarial conditions and engineering robust solutions.</p>
+            </div>
+            <div class="narrative-card">
+                <h3>Probabilistic Reasoning</h3>
+                <p>Working with Bayesian networks, Hidden Markov Models, and belief propagation. Currently developing <span class="accent-text">interpretable EEG emotion recognition</span> systems that quantify model uncertainty for safer deployment.</p>
+            </div>
+            <div class="narrative-card">
+                <h3>Autonomous Systems</h3>
+                <p>Building <span class="accent-text">Project Arbiter</span>—a modular AI agent architecture that combines planning, tool execution, and knowledge retrieval. Designing systems where AI assists software, not controls it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Arsenal -->
+    <section class="tech-section">
+        <div class="section-tag">// Technical Stack</div>
+        <h2 class="section-title">THE CORE STACK</h2>
+
+        <div class="tech-grid">
+            <div class="tech-category">
+                <h4>Core Languages & Frameworks</h4>
+                <h3>Deep Learning</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">TensorFlow/Keras</span>
+                    <span class="tech-tag">JAX</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <h4>Security & Detection</h4>
+                <h3>Threat Analysis</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">Scikit-Learn</span>
+                    <span class="tech-tag">SHAP/Explainability</span>
+                    <span class="tech-tag">Adversarial ML</span>
+                    <span class="tech-tag">Network Analysis</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <h4>AI Systems</h4>
+                <h3>Agents & Reasoning</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">LLMs</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">RAG Pipelines</span>
+                    <span class="tech-tag">Vector DBs</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <h4>Robotics & Control</h4>
+                <h3>Systems Integration</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">ROS 2</span>
+                    <span class="tech-tag">Gazebo</span>
+                    <span class="tech-tag">EKF/UKF</span>
+                    <span class="tech-tag">Micro-ROS</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <h4>Data & Infrastructure</h4>
+                <h3>Systems</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Git</span>
+                    <span class="tech-tag">Linux</span>
+                </div>
+            </div>
+            <div class="tech-category">
+                <h4>Web & APIs</h4>
+                <h3>Frontend</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">REST APIs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="section-tag">// Professional Timeline</div>
+        <h2 class="section-title">WORK <span>EXPERIENCE</span></h2>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Software Developer / AI Researcher</h3>
+                    <p class="experience-company">IIT Madras (Current)</p>
+                    <p class="experience-date">2024 – Present</p>
+                </div>
+            </div>
+            <p class="experience-description">Conducting research on machine learning robustness, probabilistic reasoning, and autonomous systems as a third-year B.Tech AI Engineering student.</p>
+            <div class="achievements">
+                <div class="achievement">Developing adversarial robustness testing frameworks for intrusion detection systems using FGSM attacks and adversarial training.</div>
+                <div class="achievement">Building anomaly-based malware detection using ML models trained on CSE-CIC-IDS datasets (6.3M samples).</div>
+                <div class="achievement">Creating interpretable EEG emotion recognition system combining HMM-MRF models with uncertainty quantification.</div>
+                <div class="achievement">Designing modular AI agent architecture (Project Arbiter) with planning, tool execution, and knowledge retrieval.</div>
+            </div>
+            <div class="stack-badge">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">PyTorch</span>
+                <span class="stack-tag">Scikit-Learn</span>
+                <span class="stack-tag">ROS 2</span>
+                <span class="stack-tag">Probabilistic Models</span>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Research Intern</h3>
+                    <p class="experience-company">Samsung Research Institute (SRI-B)</p>
+                    <p class="experience-date">July 2021 – Mar 2023</p>
+                </div>
+            </div>
+            <p class="experience-description">Researched advanced acoustic audio analytics and language identification mapping algorithms under leading research mentors.</p>
+            <div class="achievements">
+                <div class="achievement">Co-engineered robust machine learning language identification systems with custom spectrogram analytics pipelines in PyTorch.</div>
+                <div class="achievement">Optimized digital signal pre-processing utilities, increasing audio classifier training speeds and acoustic pattern accuracy.</div>
+                <div class="achievement">Resolved edge-case phoneme acoustic anomalies across multi-lingual signal parsing sprints.</div>
+            </div>
+            <div class="stack-badge">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">PyTorch</span>
+                <span class="stack-tag">Signal Processing</span>
+                <span class="stack-tag">Machine Learning</span>
+                <span class="stack-tag">Audio Analytics</span>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">
+                    <h3>Academic Research</h3>
+                    <p class="experience-company">IIT Madras (Concurrent Coursework)</p>
+                    <p class="experience-date">2022 – Present</p>
+                </div>
+            </div>
+            <p class="experience-description">Active research across multiple course projects combining deep learning, probabilistic reasoning, and robotics.</p>
+            <div class="achievements">
+                <div class="achievement">UKF consistency analysis under process-noise mis-specification with Monte Carlo NEES evaluation.</div>
+                <div class="achievement">ROS 2-based 2D pose estimation comparing EKF vs UKF with Gazebo simulation validation.</div>
+                <div class="achievement">Publication on computer forensics in cybersecurity (IJARESM, April 2022).</div>
+            </div>
+            <div class="stack-badge">
+                <span class="stack-tag">Research</span>
+                <span class="stack-tag">Probabilistic Models</span>
+                <span class="stack-tag">Deep Learning</span>
+                <span class="stack-tag">Robotics</span>
+                <span class="stack-tag">Publication</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="section-tag">// Research & Development</div>
+        <h2 class="section-title">SELECTED WORK</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-tag">AI Systems Architecture</div>
+                <h3 class="project-title">Project Arbiter</h3>
+                <p class="project-subtitle">Modular Personal AI Agent System</p>
+                <p class="project-description">A structured AI agent architecture separating planning, execution, tools, memory, and knowledge retrieval into distinct modules. Implements deterministic core control where AI suggests actions but the system validates execution.</p>
+                <div class="project-highlights">
+                    <div class="highlight">Multi-phase development roadmap (Phase 0-7 architecture defined)</div>
+                    <div class="highlight">Tool-based capability model with auto-discovery</div>
+                    <div class="highlight">Task state management and reflection engine</div>
+                    <div class="highlight">Knowledge persistence with RAG pipelines</div>
+                    <div class="highlight">Local LLM integration via Ollama</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">LLMs</span>
+                    <span class="tech-tag">Agent Architecture</span>
+                    <span class="tech-tag">RAG</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tag">ML Security Research</div>
+                <h3 class="project-title">Adversarial Robustness of IDS</h3>
+                <p class="project-subtitle">Machine Learning-Based Intrusion Detection</p>
+                <p class="project-description">Comprehensive study of adversarial vulnerability in ML-based network intrusion detection systems. Trained MLP neural networks on 6.3M CSE-CIC-IDS samples to achieve 97.98% baseline accuracy.</p>
+                <div class="project-highlights">
+                    <div class="highlight">FGSM adversarial attack simulation with epsilon perturbations</div>
+                    <div class="highlight">Adversarial training to improve robustness (recall improved from 0.09 to 0.46 at ε=0.05)</div>
+                    <div class="highlight">SHAP explainability analysis showing feature importance shifts</div>
+                    <div class="highlight">Validated on 77-feature network traffic behavioral model</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Scikit-Learn</span>
+                    <span class="tech-tag">SHAP</span>
+                    <span class="tech-tag">Adversarial ML</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tag">Malware Detection</div>
+                <h3 class="project-title">Zero-Day Malware Detection</h3>
+                <p class="project-subtitle">Anomaly-Based ML System</p>
+                <p class="project-description">Anomaly-based detection system for zero-day drive-by download malware using behavioral analysis. Two-layer detection combining URL lexical features and network traffic anomalies.</p>
+                <div class="project-highlights">
+                    <div class="highlight">651K malicious URLs dataset with 8-feature lexical analysis</div>
+                    <div class="highlight">70+ network flow features from CIC-IDS2017</div>
+                    <div class="highlight">Feature engineering with entropy calculation and normalization</div>
+                    <div class="highlight">Binary classification against signature-based detection limits</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">ML Pipelines</span>
+                    <span class="tech-tag">Feature Engineering</span>
+                    <span class="tech-tag">Malware Analysis</span>
+                    <span class="tech-tag">Network Security</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tag">Probabilistic Reasoning</div>
+                <h3 class="project-title">EEG Emotion Recognition</h3>
+                <p class="project-subtitle">HMM-MRF Inference with Uncertainty</p>
+                <p class="project-description">Interpretable emotion recognition from EEG signals using joint HMM-MRF inference. Focuses on uncertainty quantification and selective prediction for safer clinical deployment.</p>
+                <div class="project-highlights">
+                    <div class="highlight">DEAP dataset: 32 subjects, 32-channel EEG, 1,280 trials</div>
+                    <div class="highlight">Decoupled Linear-Chain CRF/HMM (temporal) and Gaussian MRF (spatial)</div>
+                    <div class="highlight">Uncertainty-aware cross-subject generalization analysis</div>
+                    <div class="highlight">Publication-targeted novel contribution framework</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">HMM/MRF</span>
+                    <span class="tech-tag">Probabilistic Models</span>
+                    <span class="tech-tag">EEG Analysis</span>
+                    <span class="tech-tag">PyTorch</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tag">Robotics & Control</div>
+                <h3 class="project-title">ROS 2 Pose Estimation</h3>
+                <p class="project-subtitle">EKF vs UKF Comparative Analysis</p>
+                <p class="project-description">2D pose estimation for differential drive robots comparing Extended Kalman Filter (EKF) and Unscented Kalman Filter (UKF). Full ROS 2 architecture with Gazebo simulation validation and hardware integration via micro-ROS.</p>
+                <div class="project-highlights">
+                    <div class="highlight">Micro-ROS for ESP32/MPU6050 sensor fusion</div>
+                    <div class="highlight">TB6612FNG motor control with LM393 encoder feedback</div>
+                    <div class="highlight">UKF consistency analysis under process-noise mis-specification</div>
+                    <div class="highlight">Monte Carlo validation with NEES/chi-squared bounds</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">ROS 2</span>
+                    <span class="tech-tag">Gazebo</span>
+                    <span class="tech-tag">EKF/UKF</span>
+                    <span class="tech-tag">Robotics</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-tag">Conference Submission</div>
+                <h3 class="project-title">UKF Consistency Analysis</h3>
+                <p class="project-subtitle">Process-Noise Underestimation Effects</p>
+                <p class="project-description">Research investigating how process noise covariance underestimation causes statistical overconfidence before visible RMSE degradation. Evaluated via NEES/chi-squared bounds across Monte Carlo trials.</p>
+                <div class="project-highlights">
+                    <div class="highlight">Two prior conference rejections; revised title/abstract strategy</div>
+                    <div class="highlight">IEEE LaTeX formatting with revised bibliography</div>
+                    <div class="highlight">Mentor-directed citation strategy integration</div>
+                    <div class="highlight">Publication preparation with rigorous statistical validation</div>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Filtering Theory</span>
+                    <span class="tech-tag">Monte Carlo</span>
+                    <span class="tech-tag">Statistics</span>
+                    <span class="tech-tag">LaTeX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications-section">
+        <div class="section-tag">// Validations & Credentials</div>
+        <h2 class="section-title">CERTIFICATIONS</h2>
+
+        <div class="cert-list">
+            <div class="cert-item">
+                <div class="cert-icon">🔒</div>
+                <div class="cert-content">
+                    <h4>Certified Ethical Hacker (CEH)</h4>
+                    <p>EC-Council | Digital Security</p>
+                </div>
+                <div class="cert-status">✓ Verified</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">☁️</div>
+                <div class="cert-content">
+                    <h4>Certified Azure Fundamentals</h4>
+                    <p>Microsoft | Cloud Infrastructure</p>
+                </div>
+                <div class="cert-status">✓ Verified</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🌐</div>
+                <div class="cert-content">
+                    <h4>Certified Engineer – Multi-Cloud Network Associate</h4>
+                    <p>Aviatrix | Cloud Networking</p>
+                </div>
+                <div class="cert-status">✓ Verified</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🐍</div>
+                <div class="cert-content">
+                    <h4>PCAP: Python Essentials Certificate</h4>
+                    <p>Python Institute | Programming</p>
+                </div>
+                <div class="cert-status">✓ Verified</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">🤖</div>
+                <div class="cert-content">
+                    <h4>Automation Anywhere RPA Professional</h4>
+                    <p>Automation Anywhere | Process Automation</p>
+                </div>
+                <div class="cert-status">✓ Verified</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2 class="footer-title">LET'S BUILD SOMETHING GREAT</h2>
+            <p class="footer-subtitle">Open to research collaborations, engineering challenges, and projects that push AI security boundaries.</p>
+            <div class="social-links">
+                <a href="https://github.com/git-prudhvi" class="social-link" title="GitHub">
+                    <span>⚙️</span>
+                </a>
+                <a href="https://linkedin.com/in/dev-prudhvi" class="social-link" title="LinkedIn">
+                    <span>💼</span>
+                </a>
+                <a href="mailto:chennaboina.prudhviraj@gmail.com" class="social-link" title="Email">
+                    <span>✉️</span>
+                </a>
+            </div>
+            <p class="footer-copyright">© 2026 Pranay Raj. All systems active. | Built with deterministic control and AI assistance.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header hide/show on scroll
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(10, 14, 39, 0.98)';
+            } else {
+                header.style.background = 'rgba(10, 14, 39, 0.95)';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+</html>
